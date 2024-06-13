@@ -1,0 +1,488 @@
+-- CREATE TABLE students (
+--     student_id SERIAL PRIMARY KEY,
+--     first_name VARCHAR(50),
+--     last_name VARCHAR(50),
+--     middle_initial CHAR(1),
+--     email VARCHAR(100),
+--     phone VARCHAR(15)
+-- );
+
+-- CREATE TABLE fees_payments (
+--     payment_id SERIAL PRIMARY KEY,
+--     student_id INT REFERENCES students(student_id),
+--     amount_paid NUMERIC(10, 2),
+--     payment_date DATE
+-- );
+
+-- CREATE TABLE courses (
+--     course_id SERIAL PRIMARY KEY,
+--     course_code VARCHAR(10),
+--     course_name VARCHAR(100)
+-- );
+
+-- CREATE TABLE course_enrollments (
+--     enrollment_id SERIAL PRIMARY KEY,
+--     student_id INT REFERENCES students(student_id),
+--     course_id INT REFERENCES courses(course_id),
+--     enrollment_date DATE
+-- );
+
+-- CREATE TABLE lecturers (
+--     lecturer_id SERIAL PRIMARY KEY,
+--     first_name VARCHAR(50),
+--     last_name VARCHAR(50),
+--     email VARCHAR(100)
+-- );
+
+-- CREATE TABLE ta (
+--     ta_id SERIAL PRIMARY KEY,
+--     first_name VARCHAR(50),
+--     last_name VARCHAR(50),
+--     email VARCHAR(100)
+-- );
+
+-- CREATE TABLE lectures_to_course_assignment (
+--     assignment_id SERIAL PRIMARY KEY,
+--     lecturer_id INT REFERENCES lecturers(lecturer_id),
+--     course_id INT REFERENCES courses(course_id)
+-- );
+
+-- CREATE TABLE lectures_to_ta_assignment (
+--     assignment_id SERIAL PRIMARY KEY,
+--     lecturer_id INT REFERENCES lecturers(lecturer_id),
+--     ta_id INT REFERENCES ta(ta_id)
+-- );
+
+
+-- Insert Students
+-- INSERT INTO students (first_name, last_name, middle_initial, email, phone) VALUES
+-- ('Edward', 'Opoku Agyemang', 'A', 'edward.opokuagyemang@ug.st.edu.gh', '+233200000001'),
+-- ('Fiavor', 'Isaac Sedem', 'I', 'fiavor.isaacsedem@ug.st.edu.gh', '+233200000002'),
+-- ('Pius', 'Oblie', NULL, 'pius.oblie@ug.st.edu.gh', '+233200000003'),
+-- ('Samia', 'Soleiman', NULL, 'samia.soleiman@ug.st.edu.gh', '+233200000004'),
+-- ('Abena', 'Nhyira Nsaako', 'N', 'abena.nhyiransaako@ug.st.edu.gh', '+233200000005'),
+-- ('Ishaan', 'Bhardwaj', NULL, 'ishaan.bhardwaj@ug.st.edu.gh', '+233200000006'),
+-- ('John', 'Edward Fodjour', 'E', 'john.edwardfodjour@ug.st.edu.gh', '+233200000007'),
+-- ('Hayet', 'Maame A. Dabanka', 'M', 'hayet.maamedabanka@ug.st.edu.gh', '+233200000008'),
+-- ('Mohammed', 'Salihu Hamisu', 'S', 'mohammed.salihuhamisu@ug.st.edu.gh', '+233200000009'),
+-- ('Asare', 'Marvin', NULL, 'asare.marvin@ug.st.edu.gh', '+233200000010'),
+-- ('Mohammed', 'Awal Yakunu Jnr', 'A', 'mohammed.awalyakunu@ug.st.edu.gh', '+233200000011'),
+-- ('Peggy', 'Esinam Somuah', 'E', 'peggy.esinamsomuah@ug.st.edu.gh', '+233200000012'),
+-- ('Desmond', 'Aflete Kamasah', 'A', 'desmond.afletekamasah@ug.st.edu.gh', '+233200000013'),
+-- ('Quansah', 'Jeffrey', NULL, 'quansah.jeffrey@ug.st.edu.gh', '+233200000014'),
+-- ('Yasmeen', 'Xoladem Doku', 'X', 'yasmeen.xolademdoku@ug.st.edu.gh', '+233200000015'),
+-- ('Muhammed', 'N. Haqq', 'N', 'muhammed.nhaqq@ug.st.edu.gh', '+233200000016'),
+-- ('Ayertey', 'Vanessa Esinam', 'V', 'ayertey.vanessaesinam@ug.st.edu.gh', '+233200000017'),
+-- ('Bernadine', 'Adusei Okrah', 'A', 'bernadine.aduseiokrah@ug.st.edu.gh', '+233200000018'),
+-- ('Ebenezer', 'Hayden Arthur', 'H', 'ebenezer.haydenarthur@ug.st.edu.gh', '+233200000019'),
+-- ('Kwarteng', 'Andrews Twum', 'A', 'kwarteng.andrewstwum@ug.st.edu.gh', '+233200000020'),
+-- ('Mohammed', 'Awal Tanko', 'A', 'mohammed.awaltanko@ug.st.edu.gh', '+233200000021'),
+-- ('Steven', 'Nyarko Abronkwah', 'N', 'steven.nyarkoabronkwah@ug.st.edu.gh', '+233200000022'),
+-- ('Maame', 'Afua Ayisibea Ayisi', 'A', 'maame.afuaayisibeaayisi@ug.st.edu.gh', '+233200000023'),
+-- ('Kudiabor', 'Jonathan Ewenam', 'J', 'kudiabor.jonathanewenam@ug.st.edu.gh', '+233200000024'),
+-- ('Apetsi', 'Freda Elikplim', 'F', 'apetsi.fredaelikplim@ug.st.edu.gh', '+233200000025'),
+-- ('Adorboe', 'Prince Philips', 'P', 'adorboe.princephilips@ug.st.edu.gh', '+233200000026'),
+-- ('Agyepong', 'Kwesi Asante', 'K', 'agyepong.kwesi_asante@ug.st.edu.gh', '+233200000027'),
+-- ('David', 'Ntow Anno', 'N', 'david.ntowanno@ug.st.edu.gh', '+233200000028'),
+-- ('Kafu', 'Gle', NULL, 'kafu.gle@ug.st.edu.gh', '+233200000029'),
+-- ('Ninson', 'Obed', NULL, 'ninson.obed@ug.st.edu.gh', '+233200000030'),
+-- ('Iddrisu', 'Tahiru', NULL, 'iddrisu.tahiru@ug.st.edu.gh', '+233200000031'),
+-- ('Ahmed', 'Fareed Opare', 'F', 'ahmed.fareedopare@ug.st.edu.gh', '+233200000032'),
+-- ('David', 'Tetteh Ankrah', 'T', 'david.tettehankrah@ug.st.edu.gh', '+233200000033'),
+-- ('Kafu', 'Kemeh', NULL, 'kafu.kemeh@ug.st.edu.gh', '+233200000034'),
+-- ('Jeffrey', 'Eririe', NULL, 'jeffrey.eririe@ug.st.edu.gh', '+233200000035'),
+-- ('Yedru', 'Joshua Kwame Makafui', 'K', 'yedru.joshuakwame@ug.st.edu.gh', '+233200000036'),
+-- ('Sena', 'Delase Anyomi', 'D', 'sena.delaseanyomi@ug.st.edu.gh', '+233200000037'),
+-- ('John', 'Anim Tenkorang', 'A', 'john.animtenkorang@ug.st.edu.gh', '+233200000038'),
+-- ('Matthew', 'Kotey Mensah', 'K', 'matthew.koteymensah@ug.st.edu.gh', '+233200000039'),
+-- ('Nkrumah', 'Shadrack', NULL, 'nkrumah.shadrack@ug.st.edu.gh', '+233200000040'),
+-- ('Amponsah', 'Jonathan Boadu', 'J', 'amponsah.jonathanboadu@ug.st.edu.gh', '+233200000041'),
+-- ('Asare', 'Baffour King David', 'K', 'asare.baffourkingdavid@ug.st.edu.gh', '+233200000042'),
+-- ('Derrick', 'Ampomah Amponsah', 'A', 'derrick.ampomahamponsah@ug.st.edu.gh', '+233200000043'),
+-- ('Attu', 'Samuel Idana', 'I', 'attu.samuelidana@ug.st.edu.gh', '+233200000044'),
+-- ('Kumi', 'Kelvin Gyabaah', 'K', 'kumi.kelvingyabaah@ug.st.edu.gh', '+233200000045'),
+-- ('Nkansah', 'Boadu Tabi', 'B', 'nkansah.boadutabi@ug.st.edu.gh', '+233200000046'),
+-- ('Wenide', 'Isaac Atta', 'I', 'wenide.isaacatta@ug.st.edu.gh', '+233200000047'),
+-- ('Nyayun', 'Prince', NULL, 'nyayun.prince@ug.st.edu.gh', '+233200000048'),
+-- ('Kwaku', 'Ofori Asare', 'O', 'kwaku.oforiasare@ug.st.edu.gh', '+233200000049'),
+-- ('Nana', 'Kwesi Wadie Kwakye', 'K', 'nana.kwesiewadie@ug.st.edu.gh', '+233200000050'),
+-- ('Asamoah', 'Nana Fosu', 'N', 'asamoah.nanafosu@ug.st.edu.gh', '+233200000051'),
+-- ('Nuku-Tagbor', 'Joshua', NULL, 'nuku-tagbor.joshua@ug.st.edu.gh', '+233200000052'),
+-- ('Amonsah', 'Samuel', NULL, 'amonsah.samuel@ug.st.edu.gh', '+233200000053'),
+-- ('Vincent', 'Anewah', NULL, 'vincent.anewah@ug.st.edu.gh', '+233200000054'),
+-- ('Nyavor', 'Cyril Morkporkpor', 'C', 'nyavor.cyrilmorkporkpor@ug.st.edu.gh', '+233200000055'),
+-- ('Ansrogya', 'Philemon', NULL, 'ansrogya.philemon@ug.st.edu.gh', '+233200000056'),
+-- ('Amoafo', 'Osei Gerald', 'O', 'amoafo.oseigerald@ug.st.edu.gh', '+233200000057'),
+-- ('Dedoo', 'Donatus Dodzi', 'D', 'dedoo.donatusdodzi@ug.st.edu.gh', '+233200000058'),
+-- ('Mawuli', 'Kweku Amevenku', 'K', 'mawuli.kwekuamevenku@ug.st.edu.gh', '+233561645611'),
+-- ('Kwabena', 'Kofi Asante','K', 'kwabena.kofi.asante@ug.st.edu.gh', '0540000001'),
+-- ('Akua', 'Serwaa Nyarko','S', 'akua.serwaa.nyarko@ug.st.edu.gh', '0540000002'),
+-- ('Yaw', 'Boateng Asiedu','B', 'yaw.boateng.asiedu@ug.st.edu.gh', '0540000003'),
+-- ('Efua','Aba Johnson','A', 'efua.aba.johnson@ug.st.edu.gh', '0540000004'),
+-- ('Kwaku', 'Adom Mensah','A', 'kwaku.adom.mensah@ug.st.edu.gh', '0540000005'),
+-- ('Abena' ,'Afriyie Osei','A', 'abena.afriyie.osei@ug.st.edu.gh', '0540000006'),
+-- ('Kojo', 'Mensah Twumasi','M', 'kojo.mensah.twumasi@ug.st.edu.gh', '0540000007');
+
+-- Insert Fees Payments
+-- ALTER TABLE fees_payments
+-- DROP CONSTRAINT fees_payments_student_id_fkey;
+
+-- INSERT INTO fees_payments (student_id, amount_paid, payment_date) VALUES
+-- (1, 300.00, '2024-01-10'),
+-- (2, 450.00, '2024-01-15'),
+-- (3, 250.00, '2024-02-10'),
+-- (4, 500.00, '2024-02-20'),
+-- (5, 350.00, '2024-03-01'),
+-- (6, 600.00, '2024-03-10'),
+-- (7, 300.00, '2024-03-15'),
+-- (8, 400.00, '2024-03-20'),
+-- (9, 500.00, '2024-04-01'),
+-- (10, 600.00, '2024-04-10'),
+-- (11, 700.00, '2024-04-15'),
+-- (12, 200.00, '2024-05-01'),
+-- (13, 450.00, '2024-05-10'),
+-- (14, 300.00, '2024-05-15'),
+-- (15, 600.00, '2024-05-20'),
+-- (16, 300.00, '2024-06-01'),
+-- (17, 400.00, '2024-06-10'),
+-- (18, 500.00, '2024-06-15'),
+-- (19, 600.00, '2024-06-20'),
+-- (20, 700.00, '2024-07-01'),
+-- (21, 200.00, '2024-07-10'),
+-- (22, 450.00, '2024-07-15'),
+-- (23, 300.00, '2024-07-20'),
+-- (24, 600.00, '2024-08-01'),
+-- (25, 300.00, '2024-08-10'),
+-- (26, 400.00, '2024-08-15'),
+-- (27, 500.00, '2024-08-20'),
+-- (28, 600.00, '2024-09-01'),
+-- (29, 700.00, '2024-09-10'),
+-- (30, 200.00, '2024-09-15'),
+-- (31, 450.00, '2024-09-20'),
+-- (32, 300.00, '2024-10-01'),
+-- (33, 600.00, '2024-10-10'),
+-- (34, 300.00, '2024-10-15'),
+-- (35, 400.00, '2024-10-20'),
+-- (36, 500.00, '2024-11-01'),
+-- (37, 600.00, '2024-11-10'),
+-- (38, 700.00, '2024-11-15'),
+-- (39, 200.00, '2024-11-20'),
+-- (40, 450.00, '2024-12-01'),
+-- (41, 300.00, '2024-12-10'),
+-- (42, 600.00, '2024-12-15'),
+-- (43, 300.00, '2024-12-20'),
+-- (44, 400.00, '2024-12-25'),
+-- (45, 500.00, '2024-12-30'),
+-- (46, 600.00, '2024-12-31'),
+-- (47, 700.00, '2024-01-05'),
+-- (48, 200.00, '2024-01-12'),
+-- (49, 450.00, '2024-01-18'),
+-- (50, 300.00, '2024-01-25'),
+-- (51, 600.00, '2024-02-01'),
+-- (52, 300.00, '2024-02-10'),
+-- (53, 400.00, '2024-02-15'),
+-- (54, 500.00, '2024-02-20'),
+-- (55, 600.00, '2024-03-01'),
+-- (56, 700.00, '2024-03-10'),
+-- (57, 200.00, '2024-03-15'),
+-- (58, 450.00, '2024-03-20'),
+-- (59, 300.00, '2024-04-01'),
+-- (60, 600.00, '2024-04-10'),
+-- (61, 300.00, '2024-04-15'),
+-- (62, 400.00, '2024-04-20'),
+-- (63, 500.00, '2024-05-01'),
+-- (64, 600.00, '2024-05-10'),
+-- (65, 700.00, '2024-05-15'),
+-- (66, 200.00, '2024-05-20'),
+-- (67, 450.00, '2024-06-01');
+
+-- INSERT INTO courses (course_code, course_name) VALUES
+-- ('CBAS210', 'ACADEMIC WRITING II'),
+-- ('CPEN202', 'COMPUTER SYSTEMS DESIGN'),
+-- ('CPEN204', 'DATA STRUCTURES AND ALGORITHMS'),
+-- ('CPEN206', 'LINEAR CIRCUITS'),
+-- ('CPEN208', 'SOFTWARE ENGINEERING'),
+-- ('CPEN212', 'DATA COMMUNICATION'),
+-- ('SENG202', 'DIFFERENTIAL EQUATIONS');
+
+-- Insert Course Enrollments
+-- ALTER TABLE course_enrollments
+-- DROP CONSTRAINT course_enrollments_student_id_fkey;
+
+-- INSERT INTO course_enrollments (student_id, course_id, enrollment_date) VALUES
+-- (1, 1, '2024-01-10'),
+-- (1, 2, '2024-01-15'),
+-- (1, 3, '2024-01-20'),
+-- (2, 1, '2024-02-10'),
+-- (2, 4, '2024-02-15'),
+-- (2, 5, '2024-02-20'),
+-- (3, 2, '2024-03-01'),
+-- (3, 3, '2024-03-10'),
+-- (3, 6, '2024-03-15'),
+-- (4, 4, '2024-03-20'),
+-- (4, 5, '2024-04-01'),
+-- (4, 7, '2024-04-10'),
+-- (5, 6, '2024-04-15'),
+-- (5, 7, '2024-04-20'),
+-- (5, 1, '2024-05-01'),
+-- (6, 1, '2024-05-10'),
+-- (6, 2, '2024-05-15'),
+-- (6, 3, '2024-05-20'),
+-- (7, 4, '2024-06-01'),
+-- (7, 5, '2024-06-10'),
+-- (7, 6, '2024-06-15'),
+-- (8, 7, '2024-06-20'),
+-- (8, 1, '2024-07-01'),
+-- (8, 2, '2024-07-10'),
+-- (9, 3, '2024-07-15'),
+-- (9, 4, '2024-07-20'),
+-- (9, 5, '2024-08-01'),
+-- (10, 6, '2024-08-10'),
+-- (10, 7, '2024-08-15'),
+-- (10, 1, '2024-08-20'),
+-- (11, 2, '2024-09-01'),
+-- (11, 3, '2024-09-10'),
+-- (11, 4, '2024-09-15'),
+-- (12, 5, '2024-09-20'),
+-- (12, 6, '2024-10-01'),
+-- (12, 7, '2024-10-10'),
+-- (13, 1, '2024-10-15'),
+-- (13, 2, '2024-10-20'),
+-- (13, 3, '2024-11-01'),
+-- (14, 4, '2024-11-10'),
+-- (14, 5, '2024-11-15'),
+-- (14, 6, '2024-11-20'),
+-- (15, 7, '2024-12-01'),
+-- (15, 1, '2024-12-10'),
+-- (15, 2, '2024-12-15'),
+-- (16, 3, '2024-12-20'),
+-- (16, 4, '2024-12-25'),
+-- (16, 5, '2024-12-30'),
+-- (17, 6, '2024-12-31'),
+-- (17, 7, '2024-01-05'),
+-- (17, 1, '2024-01-12'),
+-- (18, 2, '2024-01-18'),
+-- (18, 3, '2024-01-25'),
+-- (18, 4, '2024-02-01'),
+-- (19, 5, '2024-02-10'),
+-- (19, 6, '2024-02-15'),
+-- (19, 7, '2024-02-20'),
+-- (20, 1, '2024-03-01'),
+-- (20, 2, '2024-03-10'),
+-- (20, 3, '2024-03-15'),
+-- (21, 4, '2024-03-20'),
+-- (21, 5, '2024-04-01'),
+-- (21, 6, '2024-04-10'),
+-- (22, 7, '2024-04-15'),
+-- (22, 1, '2024-04-20'),
+-- (22, 2, '2024-05-01'),
+-- (23, 3, '2024-05-10'),
+-- (23, 4, '2024-05-15'),
+-- (23, 5, '2024-05-20'),
+-- (24, 6, '2024-06-01'),
+-- (24, 7, '2024-06-10'),
+-- (24, 1, '2024-06-15'),
+-- (25, 2, '2024-06-20'),
+-- (25, 3, '2024-07-01'),
+-- (25, 4, '2024-07-10'),
+-- (26, 5, '2024-07-15'),
+-- (26, 6, '2024-07-20'),
+-- (26, 7, '2024-08-01'),
+-- (27, 1, '2024-08-10'),
+-- (27, 2, '2024-08-15'),
+-- (27, 3, '2024-08-20'),
+-- (28, 4, '2024-09-01'),
+-- (28, 5, '2024-09-10'),
+-- (28, 6, '2024-09-15'),
+-- (29, 7, '2024-09-20'),
+-- (29, 1, '2024-10-01'),
+-- (29, 2, '2024-10-10'),
+-- (30, 3, '2024-10-15'),
+-- (30, 4, '2024-10-20'),
+-- (30, 5, '2024-11-01'),
+-- (31, 6, '2024-11-10'),
+-- (31, 7, '2024-11-15'),
+-- (31, 1, '2024-11-20'),
+-- (32, 2, '2024-12-01'),
+-- (32, 3, '2024-12-10'),
+-- (32, 4, '2024-12-15'),
+-- (33, 5, '2024-12-20'),
+-- (33, 6, '2024-12-25'),
+-- (33, 7, '2024-12-30'),
+-- (34, 1, '2024-12-31'),
+-- (34, 2, '2024-01-05'),
+-- (34, 3, '2024-01-12'),
+-- (35, 4, '2024-01-18'),
+-- (35, 5, '2024-01-25'),
+-- (35, 6, '2024-02-01'),
+-- (36, 7, '2024-02-10'),
+-- (36, 1, '2024-02-15'),
+-- (36, 2, '2024-02-20'),
+-- (37, 3, '2024-03-01'),
+-- (37, 4, '2024-03-10'),
+-- (37, 5, '2024-03-15'),
+-- (38, 6, '2024-03-20'),
+-- (38, 7, '2024-04-01'),
+-- (38, 1, '2024-04-10'),
+-- (39, 2, '2024-04-15'),
+-- (39, 3, '2024-04-20'),
+-- (39, 4, '2024-05-01'),
+-- (40, 5, '2024-05-10'),
+-- (40, 6, '2024-05-15'),
+-- (40, 7, '2024-05-20'),
+-- (41, 1, '2024-06-01'),
+-- (41, 2, '2024-06-10'),
+-- (41, 3, '2024-06-15'),
+-- (42, 4, '2024-06-20'),
+-- (42, 5, '2024-07-01'),
+-- (42, 6, '2024-07-10'),
+-- (43, 7, '2024-07-15'),
+-- (43, 1, '2024-07-20'),
+-- (43, 2, '2024-08-01'),
+-- (44, 3, '2024-08-10'),
+-- (44, 4, '2024-08-15'),
+-- (44, 5, '2024-08-20'),
+-- (45, 6, '2024-09-01'),
+-- (45, 7, '2024-09-10'),
+-- (45, 1, '2024-09-15'),
+-- (46, 2, '2024-09-20'),
+-- (46, 3, '2024-10-01'),
+-- (46, 4, '2024-10-10'),
+-- (47, 5, '2024-10-15'),
+-- (47, 6, '2024-10-20'),
+-- (47, 7, '2024-11-01'),
+-- (48, 1, '2024-11-10'),
+-- (48, 2, '2024-11-15'),
+-- (48, 3, '2024-11-20'),
+-- (49, 4, '2024-12-01'),
+-- (49, 5, '2024-12-10'),
+-- (49, 6, '2024-12-15'),
+-- (50, 7, '2024-12-20'),
+-- (50, 1, '2024-12-25'),
+-- (50, 2, '2024-12-30'),
+-- (51, 3, '2024-12-31'),
+-- (51, 4, '2024-01-05'),
+-- (51, 5, '2024-01-12'),
+-- (52, 6, '2024-01-18'),
+-- (52, 7, '2024-01-25'),
+-- (52, 1, '2024-02-01'),
+-- (53, 2, '2024-02-10'),
+-- (53, 3, '2024-02-15'),
+-- (53, 4, '2024-02-20'),
+-- (54, 5, '2024-03-01'),
+-- (54, 6, '2024-03-10'),
+-- (54, 7, '2024-03-15'),
+-- (55, 1, '2024-03-20'),
+-- (55, 2, '2024-04-01'),
+-- (55, 3, '2024-04-10'),
+-- (56, 4, '2024-04-15'),
+-- (56, 5, '2024-04-20'),
+-- (56, 6, '2024-05-01'),
+-- (57, 7, '2024-05-10'),
+-- (57, 1, '2024-05-15'),
+-- (57, 2, '2024-05-20'),
+-- (58, 3, '2024-06-01'),
+-- (58, 4, '2024-06-10'),
+-- (58, 5, '2024-06-15'),
+-- (59, 6, '2024-06-20'),
+-- (59, 7, '2024-07-01'),
+-- (59, 1, '2024-07-10'),
+-- (60, 2, '2024-07-15'),
+-- (60, 3, '2024-07-20'),
+-- (60, 4, '2024-08-01'),
+-- (61, 5, '2024-08-10'),
+-- (61, 6, '2024-08-15'),
+-- (61, 7, '2024-08-20'),
+-- (62, 1, '2024-09-01'),
+-- (62, 2, '2024-09-10'),
+-- (62, 3, '2024-09-15'),
+-- (63, 4, '2024-09-20'),
+-- (63, 5, '2024-10-01'),
+-- (63, 6, '2024-10-10'),
+-- (64, 7, '2024-10-15'),
+-- (64, 1, '2024-10-20'),
+-- (64, 2, '2024-11-01'),
+-- (65, 3, '2024-11-10'),
+-- (65, 4, '2024-11-15'),
+-- (65, 5, '2024-11-20'),
+-- (66, 6, '2024-12-01'),
+-- (66, 7, '2024-12-10'),
+-- (66, 1, '2024-12-15'),
+-- (67, 2, '2024-12-20'),
+-- (67, 3, '2024-12-25'),
+-- (67, 4, '2024-12-30');
+
+ -- Insert Lecturers
+-- INSERT INTO lecturers (first_name, last_name, email) VALUES
+-- ('Percy', 'Okae', 'percy.okae@ug.staff.edu.gh'),
+-- ('Isaac', 'Adjaye', 'aboagye.isaac@ug.staff.edu.gh'),
+-- ('Margaret', 'Ansah', 'margaret.ansah@ug.staff.edu.gh'),
+-- ('Godfrey', 'Mills', 'godfrey.mills@ug.staff.edu.gh'),
+-- ('John', 'Asiamah', 'john.asiamah@ug.staff.edu.gh'),
+-- ('Isaac', 'Debrah', 'isaac.debrah@ug.staff.edu.gh'),
+-- ('John', 'Kutor', 'john.kutor@ug.staff.edu.gh');
+
+ -- Insert Teaching Assistants (TAs)
+-- INSERT INTO ta (first_name, last_name, email) VALUES
+-- ('Ava', 'Agyei', 'ava.agyei@gmail.com'),
+-- ('Bamzy', NULL, 'bamzy@gmail.com'),
+-- ('Foster', 'Anopansuo', 'foster.anopansuo@gmail.com'),
+-- ('Hakeem', 'Nasser', 'hakeem.nasser@gmail.com'),
+-- ('Said', NULL, 'said@gmail.com'),
+-- ('Thaddeus', NULL, 'thaddeus@gmail.com');
+
+-- Insert Lectures to Course Assignment
+-- INSERT INTO lectures_to_course_assignment (lecturer_id, course_id) VALUES
+-- (1, 1),
+-- (2, 2),
+-- (3, 3),
+-- (4, 4),
+-- (5, 5),
+-- (6, 6),
+-- (7, 7);
+
+-- INSERT INTO lectures_to_ta_assignment (lecturer_id, ta_id) VALUES
+-- (1, 1),
+-- (2, 2),
+-- (3, 3),
+-- (4, 4),
+-- (5, 5),
+-- (6, 6),
+-- (7, 1);
+
+-- CREATE OR REPLACE FUNCTION calculate_outstanding_fees() RETURNS JSON AS $$
+-- DECLARE
+--     result JSON;
+-- BEGIN
+--     SELECT json_agg(row_to_json(t))
+--     INTO result
+--     FROM (
+--         SELECT s.student_id, s.first_name, s.last_name, COALESCE(SUM(fp.amount_paid), 0) AS total_paid, (1000 - COALESCE(SUM(fp.amount_paid), 0)) AS outstanding_fees
+--         FROM students s
+--         LEFT JOIN fees_payments fp ON s.student_id = fp.student_id
+--         GROUP BY s.student_id
+--     ) t;
+--     RETURN result;
+-- END;
+-- $$ LANGUAGE plpgsql;
+
+-- -- Example Usage of the Function
+-- SELECT calculate_outstanding_fees();
+
+
+-- SELECT * FROM fees_payments;
+-- SELECT * FROM course_enrollments;
+-- SELECT * FROM students;
+-- SELECT * FROM fees_payments;
+-- SELECT * FROM courses;
+-- SELECT * FROM lecturers;
+-- SELECT * FROM ta;
+-- SELECT * FROM lectures_to_course_assignment;
+-- SELECT * FROM lectures_to_ta_assignment;
+
+
+
+
+
+
+
